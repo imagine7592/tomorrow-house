@@ -1,0 +1,89 @@
+%btn-base {
+  //공통 스타일
+  @include inline-flexbox;
+  padding: 0 8px;
+  border-radius: 4px;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+// 버튼을 스타일·상태와 사이즈 로 클래스를 나눠서 다중클래스 줄거임
+// NOTE: button styles와 states
+.btn-primary {
+  @extend %btn-base;
+  color: $white;
+  background-color: $blue;
+  transition: background-color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    background-color: $blue-dark;
+  }
+}
+
+// .btn-primary 이자 disabled된 것이 hover 되었을 때
+// &:disabled:hover {
+//   background-color: $blue;
+// }
+//이게 너무 기니까  .btn-primary 이자 disabled된 것이 hover 되었을 때 방법이 아니라, hover를 그냥 hover가 아니라. disabled가 아닌 .btn-primary 가 hover 되었을 때로 모두 변경
+
+// disabled가 아닌 .btn-primary 가 hover 되었을 때
+
+.btn-secondary {
+  @extend %btn-base;
+  color: $primary;
+  background-color: $border;
+  transition: background-color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    background-color: $tertiary;
+  }
+}
+
+.btn-outlined {
+  @extend %btn-base;
+  color: $blue;
+  background-color: $white;
+  border: 1px solid $blue;
+  transition: background-color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    background-color: $blue-light;
+  }
+}
+
+.btn-ghost {
+  @extend %btn-base;
+  color: $primary;
+  background-color: transparent;
+  border: 1px solid $blue;
+  transition: color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    color: $secondary;
+  }
+}
+
+// NOTE: button size
+// 왠만하면 width값을 선언안해주는게 좋음 height값을 기준으로 사이즈를 구분
+.btn-32 {
+  @include text-style(14);
+  height: 32px;
+}
+
+.btn-40 {
+  @include text-style(16);
+  height: 40px;
+}
+
+.btn-48 {
+  @include text-style(16);
+  height: 48px;
+}
+
+.btn-55 {
+  @include text-style(18);
+  height: 55px;
+}
